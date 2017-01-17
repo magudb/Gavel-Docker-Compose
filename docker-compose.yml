@@ -1,0 +1,27 @@
+version: '2'
+services:
+  postgres:
+    container_name:  teamtakumi-votingdb
+    build: database/.    
+    volumes: 
+     - /data/TeamTakumi/votingdb:/var/lib/postgresql/data
+    restart: always
+    environment: 
+     - POSTGRES_DB:gavel  
+  smtp:
+    image: mailhog/mailhog:latest
+    #build: smtp/.   
+  voting:
+    container_name: teamtakumi-voting
+    build: voting/.  
+    ports: 
+     - "8184:5000"    
+    restart: always
+    depends_on:
+     - postgres
+     - smtp
+    links: 
+      - postgres:postgres
+      - smtp:smtp
+    command: bash -c "python initialize.py && /usr/local/bin/gunicorn -w 2 -b :5000 gavel:app"
+

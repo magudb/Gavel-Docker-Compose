@@ -1,0 +1,10 @@
+# settings optimized for development in a Vagrant VM
+base_url: http://localhost:8184/
+admin_password: Hackathon2017
+secret_key: gavel
+db_uri: postgresql://postgres/gavel
+disable_email: false
+email_from: 'Magnus@udbjorg.net' # needs to be set to something even though email is disabled
+email_password: ''
+email_host: 'smtp'
+email_port: 1025
