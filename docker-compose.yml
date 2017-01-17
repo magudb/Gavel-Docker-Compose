@@ -1,10 +1,9 @@
 version: '2'
 services:
-  postgres:
-    container_name:  teamtakumi-votingdb
+  postgres:    
     build: database/.    
     volumes: 
-     - /data/TeamTakumi/votingdb:/var/lib/postgresql/data
+     - /data/database:/var/lib/postgresql/data
     restart: always
     environment: 
      - POSTGRES_DB:gavel  
@@ -12,10 +11,10 @@ services:
     image: mailhog/mailhog:latest
     #build: smtp/.   
   voting:
-    container_name: teamtakumi-voting
+    container_name: voting
     build: voting/.  
     ports: 
-     - "8184:5000"    
+     - "80:5000"    
     restart: always
     depends_on:
      - postgres
