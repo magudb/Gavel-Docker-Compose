@@ -9,7 +9,6 @@ services:
      - POSTGRES_DB:gavel  
   smtp:
     image: mailhog/mailhog:latest
-    #build: smtp/.   
   voting:
     container_name: voting
     build: voting/.  
@@ -20,7 +19,7 @@ services:
      - postgres
      - smtp
     links: 
-      - postgres:postgres
-      - smtp:smtp
+      - postgres
+      - smtp
     command: bash -c "python initialize.py && /usr/local/bin/gunicorn -w 2 -b :5000 gavel:app"
 
