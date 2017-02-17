@@ -4,7 +4,7 @@ admin_password: password
 secret_key: key
 db_uri: postgresql://postgres/gavel
 disable_email: false
-email_from: 'Magnus.Udbjorg@Lego.com' # needs to be set to something even though email is disabled
+email_from: 'Mtest@mail.com' # needs to be set to something even though email is disabled
 email_password: ''
 email_host: 'smtp'
 email_port: 1025
